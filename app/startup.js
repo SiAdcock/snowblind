@@ -1,3 +1,3 @@
 'use strict';
 
-console.log('Started');
+import 'app/client';
