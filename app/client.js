@@ -1,7 +1,7 @@
 import React from 'react';
 
-var MyComponent = React.createClass({
-  render: function() {
+let MyComponent = React.createClass({
+  render: () => {
     return (
       <h2>My React Component</h2>
     );
