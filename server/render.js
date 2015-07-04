@@ -3,8 +3,9 @@
 import React from 'react';
 import htmlComponent from '../app/modules/index';
 
-let render = () => {
-  var html = React.renderToString(React.createElement(htmlComponent));
+let render = (state) => {
+  var props = { dehydratedState: state };
+  var html = React.renderToString(React.createElement(htmlComponent, props));
   return html;
 };
 

@@ -1,7 +1,8 @@
 import React from 'react';
 
 let HtmlComponent = React.createClass({
-  render: () => {
+  render: function() {
+    let state = JSON.stringify(this.props.dehydratedState);
     return (
       <html>
 
@@ -16,6 +17,7 @@ let HtmlComponent = React.createClass({
 
       <div id="container"></div>
 
+      <script dangerouslySetInnerHTML={{__html: 'window.__data = ' + state + ';'}}/>
       </body>
       </html>
     );
