@@ -1,3 +1,3 @@
 'use strict';
 
-import 'app/client';
+import './client';
