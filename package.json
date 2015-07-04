@@ -13,6 +13,7 @@
     "eslint": "^0.22.1",
     "eslint-plugin-react": "^2.5.1",
     "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
     "jspm": "^0.15.7",
     "node-libs-browser": "^0.5.2",
     "webpack": "^1.9.11",
