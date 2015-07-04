@@ -2,26 +2,8 @@
 
 var gulp = require('gulp');
 var browserSync = require('./lib/tasks/browser-sync');
-
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var webpackConfig = require('./webpack.config.js');
+var webpackDevServer = require('./lib/tasks/webpack-dev-server');
 
 gulp.task('browser-sync', browserSync);
 gulp.task('default', ['browser-sync']);
-gulp.task('webpack-dev-server', function(callback) {
-  var myDevConfig = Object.create(webpackConfig);
-  myDevConfig.devtool = 'sourcemap';
-  myDevConfig.debug = true;
-  // Start a webpack-dev-server
-  var compiler = webpack(myDevConfig);
-
-  new WebpackDevServer(compiler, {
-    publicPath: '/' + myDevConfig.output.publicPath,
-  }).listen(8080, 'localhost', function(err) {
-      if(err) throw new gutil.PluginError('webpack-dev-server', err);
-
-      // keep the server alive or continue?
-      // callback();
-    });
-});
+gulp.task('webpack-dev-server', webpackDevServer);
