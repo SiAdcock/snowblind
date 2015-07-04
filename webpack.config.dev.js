@@ -5,14 +5,14 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://localhost:8081',
     'webpack/hot/only-dev-server',
     './client/index.js'
   ],
   output: {
-    path: path.join(__dirname, '/public/js/'),
+    path: path.join(__dirname, '/build/'),
     filename: 'app.js',
-    publicPath: 'http://localhost:8080/js/'
+    publicPath: 'http://localhost:8081/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
