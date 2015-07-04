@@ -1,6 +1,5 @@
 module.exports = {
-  context: './app',
-  entry: './startup.js',
+  entry: './client/startup.js',
   output: {
     path: '/build',
     filename: 'bundle.js',
