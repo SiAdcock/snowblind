@@ -1,15 +1,18 @@
 'use strict';
 
 import React from 'react';
+import { createRedux } from 'redux';
+import AppStore from '../app/modules/appStore';
 import htmlComponent from '../app/modules/index';
 import MyFirstComponent from '../app/modules/myFirstComponent.js';
 
-let render = (state) => {
-  var props = {
-    dehydratedState: state,
+let render = () => {
+  const redux = createRedux({appStore: AppStore});
+  const props = {
+    dehydratedState: redux.getState(),
     markup: React.renderToString(React.createElement(MyFirstComponent))
   };
-  var html = React.renderToString(React.createElement(htmlComponent, props));
+  const html = React.renderToString(React.createElement(htmlComponent, props));
   return html;
 };
 
