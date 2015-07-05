@@ -22,6 +22,7 @@ let HtmlComponent = React.createClass({
   },
   render: function() {
     let state = JSON.stringify(this.props.dehydratedState);
+    let markup = this.props.markup;
     return (
       <html>
 
@@ -34,7 +35,7 @@ let HtmlComponent = React.createClass({
         <h1>Welcome to snowblind</h1>
       </div>
 
-      <div id="container"></div>
+      <div id="container" dangerouslySetInnerHTML={{__html: markup}}></div>
 
       {this.includeScripts()}
       <script dangerouslySetInnerHTML={{__html: 'window.__data = ' + state + ';'}}/>
