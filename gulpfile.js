@@ -9,7 +9,7 @@ var webpackDevServer = require('./lib/tasks/webpack-dev-server');
 var lint = require('./lib/tasks/lint');
 
 gulp.task('default', ['server']);
-gulp.task('server', ['assets', 'watch', 'webpack-dev-server', 'nodemon']);
+gulp.task('server', ['assets', 'watch', 'webpack-dev-server'], nodemon);
 gulp.task('assets', ['clean', 'js']);
 gulp.task('clean', clean);
 gulp.task('js', js);

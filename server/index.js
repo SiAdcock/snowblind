@@ -15,8 +15,9 @@ app.use((req, res) => {
 app.listen(8080, (err) => {
   if (err) {
     console.err(err);
-  } else {
-    console.log('Server is listening');
+  }
+  else {
+    console.log('web server listening on port 8080');
   }
 });
 
