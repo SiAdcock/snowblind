@@ -16,6 +16,7 @@
       2,
       "single",
       "avoid-escape"
-    ]
+    ],
+    "no-underscore-dangle": 0
   }
 }

@@ -1,10 +1,14 @@
+'use strict';
+
+var path = require('path');
+var webpack = require('webpack');
+
 module.exports = {
-  context: './app',
-  entry: './startup.js',
+  entry: './client/index.js',
   output: {
-    path: '/build',
+    path: path.join(__dirname, 'build', 'assets'),
     filename: 'bundle.js',
-    publicPath: 'build/'
+    publicPath: '/build/assets/'
   },
   module: {
     loaders: [
@@ -15,6 +19,13 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      warnings: false
+    }
+  })
+  ],
   resolveLoader: {
     root: __dirname + '/node_modules'
   }
