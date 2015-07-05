@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gulp assets",
     "start": "node ./index",
-    "test": "mocha --compilers js:babel/register"
+    "test": "node ./bin/test"
   },
   "author": "Simon Adcock (@SiAdcock)",
   "license": "ISC",
@@ -28,7 +28,8 @@
     "react-hot-loader": "^1.2.7",
     "shelljs": "^0.5.1",
     "webpack": "^1.9.11",
-    "webpack-dev-server": "^1.9.0"
+    "webpack-dev-server": "^1.9.0",
+    "yargs": "^3.14.0"
   },
   "dependencies": {
     "babel": "^5.6.14",
