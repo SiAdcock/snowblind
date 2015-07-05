@@ -1,9 +1,9 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
+import path from 'path';
+import webpack from 'webpack';
 
-module.exports = {
+const config = {
   entry: [
     'webpack-dev-server/client?http://localhost:8081',
     'webpack/hot/only-dev-server',
@@ -31,3 +31,5 @@ module.exports = {
     root: __dirname + '/node_modules'
   }
 };
+
+export default config;

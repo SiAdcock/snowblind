@@ -29,7 +29,7 @@ describe('Index HTML Component', () => {
 
     expect(innerHtml).to.equal('fake-markup');
   });
-  it('captures its state', function() {
+  it('captures its state', () => {
     const fakeState = {foo: 'bar'};
     const component = createComponent(HTMLComponent, {dehydratedState: fakeState});
     const body = component.props.children[1];
@@ -38,7 +38,7 @@ describe('Index HTML Component', () => {
 
     expect(capturedState).to.include(JSON.stringify(fakeState));
   });
-  it('adds dev scripts in dev mode', function() {
+  it('adds dev scripts in dev mode', () => {
     getNodeEnvStub.returns('development');
     const component = createComponent(HTMLComponent);
     const body = component.props.children[1];
@@ -46,7 +46,7 @@ describe('Index HTML Component', () => {
 
     expect(includedScripts.length).to.equal(2);
   });
-  it('adds build scripts in production mode', function() {
+  it('adds build scripts in production mode', () => {
     getNodeEnvStub.returns('production');
     const component = createComponent(HTMLComponent);
     const body = component.props.children[1];
