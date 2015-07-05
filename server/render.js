@@ -6,7 +6,7 @@ import AppStore from '../app/modules/appStore';
 import htmlComponent from '../app/modules/index';
 import MyFirstComponent from '../app/modules/myFirstComponent.js';
 
-let render = () => {
+const render = () => {
   const redux = createRedux({appStore: AppStore});
   const props = {
     dehydratedState: redux.getState(),

@@ -1,7 +1,7 @@
 import React from 'react';
 import getNodeEnv from '../../lib/helpers/getNodeEnv';
 
-let HtmlComponent = React.createClass({
+const HtmlComponent = React.createClass({
   propTypes: {
     markup: React.PropTypes.string,
     dehydratedState: React.PropTypes.object

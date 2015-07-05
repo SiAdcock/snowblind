@@ -8,7 +8,7 @@ const app = new Express();
 
 app.use('/build', Express.static(path.join(process.cwd(), 'build')));
 app.use((req, res) => {
-  let html = render();
+  const html = render();
   res.send(html);
 });
 app.listen(8080, (err) => {

@@ -1,5 +1,6 @@
 'use strict';
 
+require('babel/register')({});
 var gulp = require('gulp');
 var nodemon = require('./lib/tasks/nodemon');
 var clean = require('./lib/tasks/clean');

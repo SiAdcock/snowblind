@@ -1,6 +1,6 @@
 import React from 'react';
 
-let MyComponent = React.createClass({
+const MyComponent = React.createClass({
   render: () => {
     return (
       <h2>My React Component</h2>
