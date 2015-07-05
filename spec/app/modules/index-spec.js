@@ -22,7 +22,7 @@ describe('Index HTML Component', () => {
     });
     mockery.registerMock('../../lib/helpers/getNodeEnv', getNodeEnvStub);
     HTMLComponent = require('../../../app/modules/index');
-  })
+  });
   afterEach(() => {
     mockery.deregisterAll();
     mockery.disable();
