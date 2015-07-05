@@ -17,6 +17,9 @@ let HtmlComponent = React.createClass({
 
       <div id="container"></div>
 
+      {/* TODO: dev server only */}
+      <script src="http://localhost:8081/build/app.js"/>
+      <script src="http://localhost:35729/livereload.js"/>
       <script dangerouslySetInnerHTML={{__html: 'window.__data = ' + state + ';'}}/>
       </body>
       </html>

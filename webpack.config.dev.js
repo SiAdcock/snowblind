@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/build/'),
     filename: 'app.js',
-    publicPath: 'http://localhost:8081/'
+    publicPath: 'http://localhost:8081/build/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -22,8 +22,8 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel'
+        loaders: ['react-hot', 'babel'],
+        exclude: /node_modules/
       }
     ]
   },

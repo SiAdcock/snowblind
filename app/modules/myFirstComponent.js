@@ -8,7 +8,4 @@ let MyComponent = React.createClass({
   }
 });
 
-React.render(
-  <MyComponent />,
-  document.getElementById('container')
-);
+export default MyComponent;
