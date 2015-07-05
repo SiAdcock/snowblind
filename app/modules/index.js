@@ -1,12 +1,16 @@
 import React from 'react';
-const env = process.env.NODE_ENV || 'development';
+import getNodeEnv from '../../lib/helpers/getNodeEnv';
 
 let HtmlComponent = React.createClass({
+  propTypes: {
+    markup: React.PropTypes.string,
+    dehydratedState: React.PropTypes.object
+  },
   includeScripts: function() {
     let appSrc;
     let scriptSrcs = [];
 
-    if (env === 'development') {
+    if (getNodeEnv() === 'development') {
       appSrc = 'http://localhost:8081/build/app.js';
       scriptSrcs.push('http://localhost:35729/livereload.js');
     }
@@ -14,9 +18,10 @@ let HtmlComponent = React.createClass({
       appSrc = 'build/assets/bundle.js';
     }
     scriptSrcs.push(appSrc);
+
     return scriptSrcs.map(function(src) {
       return (
-        <script src={src}/>
+        <script src={src} key={src}/>
       );
     });
   },
