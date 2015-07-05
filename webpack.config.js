@@ -1,7 +1,11 @@
+'use strict';
+
+var path = require('path');
+
 module.exports = {
   entry: './client/index.js',
   output: {
-    path: '/build',
+    path: path.join(__dirname, '/build/'),
     filename: 'bundle.js',
     publicPath: '/build/'
   },

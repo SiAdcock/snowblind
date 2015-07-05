@@ -11,7 +11,7 @@ let HtmlComponent = React.createClass({
       scriptSrcs.push('http://localhost:35729/livereload.js');
     }
     else {
-      appSrc = 'build/app.js';
+      appSrc = 'build/bundle.js';
     }
     scriptSrcs.push(appSrc);
     return scriptSrcs.map(function(src) {

@@ -16,4 +16,3 @@ gulp.task('js', js);
 gulp.task('watch', watch);
 gulp.task('lint', lint);
 gulp.task('webpack-dev-server', webpackDevServer);
-gulp.task('nodemon', nodemon);
