@@ -1,7 +1,6 @@
 'use strict';
 
 import Express from 'express';
-import serveStatic from 'serve-static';
 import path from 'path';
 import render from './render';
 import AppStore from '../app/modules/appStore';
