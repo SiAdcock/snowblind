@@ -1,19 +1,12 @@
 'use strict';
 
 import { expect } from 'chai';
-import React from 'react/addons';
 import mockery from 'mockery';
 import sinon from 'sinon';
+import createComponent from '../../spec-helpers/createComponent';
 
-const TestUtils = React.addons.TestUtils;
 let HTMLComponent;
 let getNodeEnvStub = sinon.stub();
-
-function createComponent(component, props, ...children) {
-  const shallowRenderer = TestUtils.createRenderer();
-  shallowRenderer.render(React.createElement(component, props, children.length > 1 ? children : children[0]));
-  return shallowRenderer.getRenderOutput();
-}
 
 describe('Index HTML Component', () => {
   beforeEach(() => {
