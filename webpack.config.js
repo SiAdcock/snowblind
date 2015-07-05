@@ -1,9 +1,9 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
+import path from 'path';
+import webpack from 'webpack';
 
-module.exports = {
+const config = {
   entry: './client/index.js',
   output: {
     path: path.join(__dirname, 'build', 'assets'),
@@ -30,3 +30,5 @@ module.exports = {
     root: __dirname + '/node_modules'
   }
 };
+
+export default config;
