@@ -1,5 +1,7 @@
+'use strict';
+
 import React from 'react';
-import getNodeEnv from '../../lib/helpers/getNodeEnv';
+import getNodeEnv from './helpers/getNodeEnv';
 
 const HtmlComponent = React.createClass({
   propTypes: {
@@ -32,18 +34,18 @@ const HtmlComponent = React.createClass({
       <html>
 
       <head>
-        <title>.:. snowblind :.:</title>
+        <title>Todo app</title>
       </head>
 
       <body>
-      <div>
-        <h1>Welcome to snowblind</h1>
-      </div>
+        <div>
+          <h1>Todo</h1>
+        </div>
 
-      <div id="container" dangerouslySetInnerHTML={{__html: markup}}></div>
+        <div id="container" dangerouslySetInnerHTML={{__html: markup}}></div>
 
-      {this.includeScripts()}
-      <script dangerouslySetInnerHTML={{__html: 'window.__data = ' + state + ';'}}/>
+        <script dangerouslySetInnerHTML={{__html: 'window.__data = ' + state + ';'}}/>
+        {this.includeScripts()}
       </body>
       </html>
     );
