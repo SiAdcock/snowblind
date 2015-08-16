@@ -1,15 +1,19 @@
+'use strict';
+
+window.__SERVER__ = false;
+
 import React from 'react';
-import { createRedux } from 'redux';
-import { Provider } from 'redux/react';
-import MyFirstComponent from './../app/modules/myFirstComponent.js';
-import AppStore from './../app/modules/appStore';
+import { Provider } from 'react-redux';
+import create from '../app/modules/redux';
+import TodoListContainer from './../app/modules/components/todoListContainer';
+import * as reducers from './../app/modules/reducers/index';
 
 const initialState = window.__data;
-const redux = createRedux({ appStore: AppStore }, initialState);
+const store = create(reducers, initialState);
 
 React.render(
-  <Provider redux={redux}>
-    {()=><MyFirstComponent />}
+  <Provider store={store}>
+    {()=><TodoListContainer />}
   </Provider>,
   document.getElementById('container')
 );
