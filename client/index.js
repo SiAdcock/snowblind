@@ -5,7 +5,7 @@ window.__SERVER__ = false;
 import React from 'react';
 import { Provider } from 'react-redux';
 import create from '../app/modules/redux';
-import TodoListContainer from './../app/modules/components/todoListContainer';
+import TodoListContainer from './../app/modules/containers/todoList';
 import * as reducers from './../app/modules/reducers/index';
 
 const initialState = window.__data;
