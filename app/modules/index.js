@@ -35,6 +35,7 @@ const HtmlComponent = React.createClass({
 
       <head>
         <title>Todo app</title>
+        <link rel="stylesheet" type="text/css" href="/build/styles/styles.css"/>
       </head>
 
       <body>

@@ -5,7 +5,7 @@ import React from 'react';
 class Viewport {
   render () {
     return (
-      <div>
+      <div className="viewport">
         I am a viewport
       </div>
     );
