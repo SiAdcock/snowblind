@@ -18,5 +18,8 @@
       "avoid-escape"
     ],
     "no-underscore-dangle": 0
+  },
+  "globals": {
+    "__SERVER__": true
   }
 }

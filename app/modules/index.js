@@ -35,13 +35,10 @@ const HtmlComponent = React.createClass({
 
       <head>
         <title>Todo app</title>
+        <link rel="stylesheet" type="text/css" href="/build/styles/styles.css"/>
       </head>
 
       <body>
-        <div>
-          <h1>Todo</h1>
-        </div>
-
         <div id="container" dangerouslySetInnerHTML={{__html: markup}}></div>
 
         <script dangerouslySetInnerHTML={{__html: 'window.__data = ' + state + ';'}}/>
