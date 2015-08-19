@@ -4,7 +4,7 @@ window.__SERVER__ = false;
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import create from '../app/modules/redux';
+import create from '../app/helpers/redux';
 import GameContainer from './../app/modules/containers/game';
 import * as reducers from '../app/modules/todo/reducers/index';
 

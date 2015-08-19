@@ -1,6 +1,6 @@
 'use strict';
 
-import { get } from '../../fetch';
+import { get } from '../../../helpers/fetch';
 import { createAction } from 'redux-actions';
 import { GET } from '../../../constants/actionTypes.js';
 
