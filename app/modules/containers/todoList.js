@@ -3,9 +3,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actionCreators from '../actions/index';
-import TodoList from './../components/todoList';
-import TodoListInput from './../components/todoListInput';
+import * as actionCreators from '../todo/actions/index';
+import TodoList from './../todo/components/todoList';
+import TodoListInput from './../todo/components/todoListInput';
 
 @connect(state => ({
   todos: state.todos

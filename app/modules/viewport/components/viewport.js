@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Player from './player';
+import Player from './../../player/components/player';
 
 class Viewport {
   render () {

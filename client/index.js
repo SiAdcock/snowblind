@@ -6,7 +6,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import create from '../app/modules/redux';
 import GameContainer from './../app/modules/containers/game';
-import * as reducers from './../app/modules/reducers/index';
+import * as reducers from '../app/modules/todo/reducers/index';
 
 const initialState = window.__data;
 const store = create(reducers, initialState);
