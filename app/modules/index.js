@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import getNodeEnv from './helpers/getNodeEnv';
+import getNodeEnv from '../helpers/getNodeEnv';
 
 const HtmlComponent = React.createClass({
   propTypes: {

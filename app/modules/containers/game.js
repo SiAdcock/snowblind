@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Viewport from '../components/viewport';
+import Viewport from '../viewport/components/viewport';
 
 class GameContainer {
   render() {

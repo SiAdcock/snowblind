@@ -1,6 +1,6 @@
 'use strict';
 
-import { GET, ADD } from '../constants/actionTypes.js';
+import { GET, ADD } from '../../../constants/actionTypes.js';
 import { handleActions } from 'redux-actions';
 
 let todosMap = {};
