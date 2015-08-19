@@ -2,7 +2,7 @@
 
 import { post } from '../../fetch';
 import { createAction } from 'redux-actions';
-import { ADD } from '../../constants/actionTypes.js';
+import { ADD } from '../../../constants/actionTypes.js';
 
 const action = createAction(ADD, async payload => {
   const result = await post('/api/add', {
