@@ -5,7 +5,7 @@ import React from 'react';
 class Player {
   render () {
     return (
-      <div className="player"/>
+      <div className="player" style={{left: this.props.pos.x, top: this.props.pos.y}}/>
     );
   }
 }

@@ -13,7 +13,7 @@ import TodoListInput from './../todo/components/todoListInput';
 class TodoListContainer {
   render() {
     const { dispatch, todos } = this.props;
-    const actions = bindActionCreators(actionCreators, dispatch)
+    const actions = bindActionCreators(actionCreators, dispatch);
 
     return (
       <div>
