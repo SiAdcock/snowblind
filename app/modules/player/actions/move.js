@@ -5,7 +5,7 @@ import { createAction } from 'redux-actions';
 import { MOVE_PLAYER } from '../../../constants/actionTypes.js';
 
 const action = createAction(MOVE_PLAYER, async payload => {
-  const result = await post('/api/movePlayer', {
+  const result = await post('/api/player/move', {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'

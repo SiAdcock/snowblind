@@ -23,7 +23,7 @@ class GameContainer extends Component {
 
 function select(state) {
   return {
-    player: state.world.player
+    player: state.player
   };
 }
 
