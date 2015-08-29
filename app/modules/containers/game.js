@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import Viewport from '../viewport/components/viewport';
+import Viewport from '../world/components/viewport';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../player/actions/index';
