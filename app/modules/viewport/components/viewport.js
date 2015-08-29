@@ -19,6 +19,7 @@ class Viewport {
 
     switch (keyCode) {
       case 87:
+        this.props.move({ direction: 'UP' });
         return;
       case 83:
         this.props.move({ direction: 'DOWN' });
