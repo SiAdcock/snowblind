@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Viewport from '../viewport/components/viewport';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actionCreators from '../world/actions/index';
+import * as actionCreators from '../player/actions/index';
 
 class GameContainer extends Component {
   render() {
