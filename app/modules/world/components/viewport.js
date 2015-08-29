@@ -5,10 +5,8 @@ import Player from './../../player/components/player';
 
 class Viewport {
   componentDidMount () {
+    window.removeEventListener('keyup');
     window.addEventListener('keyup', this.movePlayer.bind(this));
-  }
-  componentWillUnmount () {
-    window.removeEventListener('keyup', this.movePlayer);
   }
   movePlayer (e) {
     let keyCode = e.keyCode || e.which;
