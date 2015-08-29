@@ -5,7 +5,7 @@ import { createAction } from 'redux-actions';
 import { GET_WORLD } from '../../../constants/actionTypes.js';
 
 const action = createAction(GET_WORLD, async () => {
-  let url = '/api/world';
+  let url = '/api';
   let result = await get(url);
 
   return result;
