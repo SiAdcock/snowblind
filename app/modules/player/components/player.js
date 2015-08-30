@@ -1,8 +1,8 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 
-class Player {
+class Player extends Component {
   render () {
     return (
       <div className="player" style={{left: this.props.pos.x, top: this.props.pos.y}}/>

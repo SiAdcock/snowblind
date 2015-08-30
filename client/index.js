@@ -2,14 +2,15 @@
 
 window.__SERVER__ = false;
 
-import _ from 'lodash';
 import React from 'react';
 import { Provider } from 'react-redux';
 import create from '../app/helpers/redux';
 import GameContainer from './../app/modules/containers/game';
-import * as worldReducers from '../app/modules/world/reducers/index';
+import playerReducers from '../app/modules/player/reducers';
+import consoleReducers from '../app/modules/console/reducers';
 
-const reducers = _.extend({}, worldReducers);
+const reducers = Object.assign({}, { player: playerReducers }, { log: consoleReducers });
+
 const initialState = window.__data;
 const store = create(reducers, initialState);
 

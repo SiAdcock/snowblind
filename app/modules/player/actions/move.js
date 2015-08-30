@@ -2,10 +2,10 @@
 
 import { post } from '../../../helpers/fetch';
 import { createAction } from 'redux-actions';
-import { ADD } from '../../../constants/actionTypes.js';
+import { MOVE_PLAYER } from '../../../constants/actionTypes.js';
 
-const action = createAction(ADD, async payload => {
-  const result = await post('/api/add', {
+const action = createAction(MOVE_PLAYER, async payload => {
+  const result = await post('/api/player/move', {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'

@@ -16,8 +16,8 @@ describe('Index HTML Component', () => {
     mockery.enable({
       warnOnUnregistered: false
     });
-    mockery.registerMock('../helpers/getNodeEnv', getNodeEnvStub);
-    HTMLComponent = require('../../../app/modules/index');
+    mockery.registerMock('../../app/helpers/getNodeEnv', getNodeEnvStub);
+    HTMLComponent = require('../../../lib/server/HTMLComponent');
   });
   afterEach(() => {
     mockery.deregisterAll();

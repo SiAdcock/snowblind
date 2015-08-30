@@ -2,13 +2,13 @@
 
 import { get } from '../../../helpers/fetch';
 import { createAction } from 'redux-actions';
-import { GET } from '../../../constants/actionTypes.js';
+import { GET_LOG } from '../../../constants/actionTypes';
 
-const action = createAction(GET, async () => {
-  let url = '/api/';
+const getLog = createAction(GET_LOG, async () => {
+  let url = '/api/log/';
   let result = await get(url);
-  
+
   return result;
 });
 
-export default action;
+export default getLog;
