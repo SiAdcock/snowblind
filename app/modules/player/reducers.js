@@ -1,6 +1,6 @@
 'use strict';
 
-import { GET_PLAYER, MOVE_PLAYER } from '../../../constants/actionTypes.js';
+import { GET_PLAYER, MOVE_PLAYER } from '../../constants/actionTypes.js';
 import { handleActions } from 'redux-actions';
 
 let playerMap = {};

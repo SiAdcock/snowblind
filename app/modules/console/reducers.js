@@ -1,6 +1,6 @@
 'use strict';
 
-import { GET_LOG } from '../../../constants/actionTypes';
+import { GET_LOG } from '../../constants/actionTypes';
 import { handleActions } from 'redux-actions';
 
 let logMap = {};
