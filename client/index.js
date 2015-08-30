@@ -8,8 +8,9 @@ import { Provider } from 'react-redux';
 import create from '../app/helpers/redux';
 import GameContainer from './../app/modules/containers/game';
 import * as playerReducers from '../app/modules/player/reducers/index';
+import * as consoleReducers from '../app/modules/console/reducers/index';
 
-const reducers = _.extend({}, playerReducers);
+const reducers = _.extend({}, playerReducers, consoleReducers);
 const initialState = window.__data;
 const store = create(reducers, initialState);
 
