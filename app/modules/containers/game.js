@@ -9,7 +9,6 @@ import * as actionCreators from '../player/actions/index';
 
 class GameContainer extends Component {
   render() {
-
     const { dispatch, player, log } = this.props;
     const actions = bindActionCreators(actionCreators, dispatch);
 
@@ -23,11 +22,11 @@ class GameContainer extends Component {
   }
 }
 
-function select(state) {
+const select = (state) => {
   return {
     player: state.player,
     log: state.log
   };
-}
+};
 
 export default connect(select)(GameContainer);

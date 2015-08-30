@@ -4,10 +4,10 @@ import { GET_PLAYER, MOVE_PLAYER } from '../../constants/actionTypes.js';
 import { handleActions } from 'redux-actions';
 
 let playerMap = {};
-let getPlayer = (state, action) => {
+const getPlayer = (state, action) => {
   return action.payload;
 };
-let movePlayer = (state, action) => {
+const movePlayer = (state, action) => {
   return {
     pos: action.payload
   };

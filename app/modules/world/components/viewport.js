@@ -1,20 +1,21 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import Player from './../../player/components/player';
 
-class Viewport {
+class Viewport extends Component {
   componentDidMount () {
-    window.removeEventListener('keyup');
+    window.removeEventListener('keyup', this.movePlayer.bind(this));
     window.addEventListener('keyup', this.movePlayer.bind(this));
   }
   movePlayer (e) {
-    let keyCode = e.keyCode || e.which;
+    const keyCode = e.keyCode || e.which;
 
     if (!keyCode) {
       return;
     }
 
+    //TODO: handle in action?
     switch (keyCode) {
       case 87:
         this.props.move({ direction: 'UP' });
