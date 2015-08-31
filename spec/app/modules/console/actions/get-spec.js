@@ -1,33 +1,30 @@
 'use strict';
 
-const fetch = {
+const fetchMock = {
   get: sinon.stub()
 };
-let getLogAction;
+let getLog;
 
-describe('Get console log', () => {
+describe('Get console log action', () => {
   beforeEach(() => {
-    mockery.enable({
-      warnOnUnregistered: false
-    });
-    mockery.registerMock('../../../helpers/fetch', fetch);
-    getLogAction = require('../../../../../app/modules/console/actions/get').actionCreator;
+    mockSetup();
+    mockery.registerMock('../../../helpers/fetch', fetchMock);
+    getLog = require('../../../../../app/modules/console/actions/get').actionCreator;
   });
   afterEach(() => {
-    mockery.deregisterAll();
-    mockery.disable();
-    fetch.get.reset();
+    mockTearDown();
+    fetchMock.get.reset();
   });
   it('calls isomorphic fetch with log URL', () => {
-    getLogAction();
+    getLog();
 
-    expect(fetch.get.calledWith('/api/log/')).to.equal(true);
+    expect(fetchMock.get.calledWith('/api/log/')).to.be.true;
   });
   it('returns result of isomorphic fetch', () => {
     let expected = [{id: 1, text: 'You are on an icy plateau'}];
 
-    fetch.get.returns(expected);
+    fetchMock.get.returns(expected);
 
-    return expect(getLogAction()).to.become(expected);
+    return expect(getLog()).to.become(expected);
   });
 });

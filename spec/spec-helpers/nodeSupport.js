@@ -10,3 +10,10 @@ chai.use(chaiAsPromised);
 global.expect = chai.expect;
 global.sinon = sinon;
 global.mockery = mockery;
+global.mockSetup = (options = { warnOnUnregistered: false }) => {
+  mockery.enable(options);
+};
+global.mockTearDown = () => {
+  mockery.disable();
+  mockery.deregisterAll();
+};
