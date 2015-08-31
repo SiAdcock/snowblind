@@ -16,4 +16,5 @@ const movePlayer = (state, action) => {
 playerMap[GET_PLAYER] = getPlayer;
 playerMap[MOVE_PLAYER] = movePlayer;
 
+export { getPlayer, movePlayer };
 export default handleActions(playerMap, {});

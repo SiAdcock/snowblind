@@ -1,55 +1,48 @@
 'use strict';
 
-import { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
 import createComponent from '../../spec-helpers/createComponent';
 
 let HTMLComponent;
-let getNodeEnvStub = sinon.stub();
-const getBodyFromComponent = (component) => {
-  return component.props.children[1];
+const getNodeEnvStub = sinon.stub();
+const getChildrenOfBodyElement = (component) => {
+  const body = component.props.children[1];
+  return body.props.children;
 };
 
 describe('Index HTML Component', () => {
   beforeEach(() => {
-    mockery.enable({
-      warnOnUnregistered: false
-    });
+    mockSetup();
     mockery.registerMock('../../app/helpers/getNodeEnv', getNodeEnvStub);
     HTMLComponent = require('../../../lib/server/HTMLComponent');
   });
   afterEach(() => {
-    mockery.deregisterAll();
-    mockery.disable();
+    mockTearDown();
     getNodeEnvStub.reset();
   });
-  it('renders its markup props', () => {
-    const component = createComponent(HTMLComponent, {markup: 'fake-markup'});
-    const container = getBodyFromComponent(component).props.children[0];
+  it('renders its props', () => {
+    const props = {
+      dehydratedState: {foo: 'bar'},
+      markup: 'fake-markup'
+    };
+    const component = createComponent(HTMLComponent, props);
+    const [container, stateScript] = getChildrenOfBodyElement(component);
     const innerHtml = container.props.dangerouslySetInnerHTML.__html;
-
-    expect(innerHtml).to.equal('fake-markup');
-  });
-  it('captures its state', () => {
-    const fakeState = {foo: 'bar'};
-    const component = createComponent(HTMLComponent, {dehydratedState: fakeState});
-    const stateScript = getBodyFromComponent(component).props.children[1];
     const capturedState = stateScript.props.dangerouslySetInnerHTML.__html;
 
-    expect(capturedState).to.include(JSON.stringify(fakeState));
+    expect(innerHtml).to.equal('fake-markup');
+    expect(capturedState).to.include(JSON.stringify({foo: 'bar'}));
   });
   it('adds dev scripts in dev mode', () => {
     getNodeEnvStub.returns('development');
     const component = createComponent(HTMLComponent);
-    const includedScripts = getBodyFromComponent(component).props.children[2];
+    const [, , includedScripts] = getChildrenOfBodyElement(component);
 
     expect(includedScripts.length).to.equal(2);
   });
   it('adds build scripts in production mode', () => {
     getNodeEnvStub.returns('production');
     const component = createComponent(HTMLComponent);
-    const includedScripts = getBodyFromComponent(component).props.children[2];
+    const [, , includedScripts] = getChildrenOfBodyElement(component);
 
     expect(includedScripts.length).to.equal(1);
   });
