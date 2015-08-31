@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import Player from './../../player/components/player';
+import Player from '../../player/components/player';
 
 class Viewport extends Component {
   componentDidMount () {
@@ -41,5 +41,10 @@ class Viewport extends Component {
     );
   }
 }
+
+Viewport.propTypes = {
+  player: React.PropTypes.object,
+  move: React.PropTypes.func
+};
 
 export default Viewport;
