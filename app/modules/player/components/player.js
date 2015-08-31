@@ -10,4 +10,8 @@ class Player extends Component {
   }
 }
 
+Player.PropTypes = {
+  pos: React.PropTypes.object
+};
+
 export default Player;
