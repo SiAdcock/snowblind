@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import Player from '../../player/components/player';
+import { DIRECTIONS } from '../../../constants/keyMap';
 
 class Viewport extends Component {
   componentDidMount () {
@@ -10,26 +11,14 @@ class Viewport extends Component {
   }
   movePlayer (e) {
     const keyCode = e.keyCode || e.which;
+    const direction = keyCode && DIRECTIONS[keyCode];
 
-    if (!keyCode) {
+    if (!keyCode || !direction) {
       return;
     }
 
-    //TODO: handle in action?
-    switch (keyCode) {
-      case 87:
-        this.props.move({ direction: 'UP' });
-        return;
-      case 83:
-        this.props.move({ direction: 'DOWN' });
-        return;
-      case 65:
-        this.props.move({ direction: 'LEFT' });
-        return;
-      case 68:
-        this.props.move({ direction: 'RIGHT' });
-        return;
-    }
+    this.props.move({ direction: direction });
+
   }
   render () {
     const { player } = this.props;
