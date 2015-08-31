@@ -8,17 +8,15 @@ const getBodyFromComponent = (component) => {
   return component.props.children[1];
 };
 
+//TODO: this is incredibly ugly, please change the way we test components!
 describe('Index HTML Component', () => {
   beforeEach(() => {
-    mockery.enable({
-      warnOnUnregistered: false
-    });
+    mockSetup();
     mockery.registerMock('../../app/helpers/getNodeEnv', getNodeEnvStub);
     HTMLComponent = require('../../../lib/server/HTMLComponent');
   });
   afterEach(() => {
-    mockery.deregisterAll();
-    mockery.disable();
+    mockTearDown();
     getNodeEnvStub.reset();
   });
   it('renders its markup props', () => {
