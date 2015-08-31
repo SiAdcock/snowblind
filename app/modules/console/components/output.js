@@ -19,4 +19,8 @@ class Output extends Component {
   }
 }
 
+Output.propTypes = {
+  log: React.PropTypes.array
+};
+
 export default Output;
