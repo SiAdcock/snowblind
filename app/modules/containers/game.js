@@ -22,6 +22,12 @@ class GameContainer extends Component {
   }
 }
 
+GameContainer.propTypes = {
+  dispatch: React.PropTypes.func,
+  player: React.PropTypes.object,
+  log: React.PropTypes.array
+};
+
 const select = (state) => {
   return {
     player: state.player,
@@ -29,4 +35,5 @@ const select = (state) => {
   };
 };
 
+export { GameContainer };
 export default connect(select)(GameContainer);
