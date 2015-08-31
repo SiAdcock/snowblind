@@ -11,7 +11,9 @@ spawn(
   [
     glob,
     '--compilers',
-    'js:babel/register'
+    'js:babel/register',
+    '--require',
+    'spec/spec-helpers/nodeSupport'
   ],
   {
     stdio: 'inherit'

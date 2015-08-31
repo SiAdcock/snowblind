@@ -1,8 +1,5 @@
 'use strict';
 
-import { expect } from 'chai';
-import mockery from 'mockery';
-import sinon from 'sinon';
 import createComponent from '../../spec-helpers/createComponent';
 
 let HTMLComponent;

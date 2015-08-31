@@ -5,6 +5,9 @@
     "beforeEach": false,
     "afterEach": false,
     "before": false,
-    "after": false
+    "after": false,
+    "sinon": false,
+    "mockery": false,
+    "expect": false
   }
 }
