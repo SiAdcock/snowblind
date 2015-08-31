@@ -11,10 +11,10 @@ describe('Console reducers', () => {
     mockTearDown();
   });
   it('updates log state to be the action\'s payload', () => {
-    let expected = {
+    let action = {
       payload: [{ id: 1, text: 'You have walked into a wall' }]
     };
 
-    expect(getLog(undefined, expected)).to.deep.equal(expected.payload);
+    expect(getLog(undefined, action)).to.deep.equal(action.payload);
   });
 });
