@@ -10,4 +10,5 @@ const getLog = (state, action) => {
 
 logMap[GET_LOG] = getLog;
 
+export { getLog };
 export default handleActions(logMap, []);
