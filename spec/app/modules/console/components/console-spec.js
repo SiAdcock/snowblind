@@ -20,18 +20,17 @@ describe('Console component', () => {
     mockTearDown();
   });
   it('renders the console', () => {
-    const logMock = 'foo';
-    const component = createComponent(Console, {log: logMock});
+    const component = createComponent(Console);
 
     expect(component.type).to.equal('div');
     expect(component.props.className).to.equal('console');
   });
   it('passes the log to the console output', () => {
-    const logMock = 'foo';
+    const logMock = [{id: 1, text: 'You go north'}];
     const component = createComponent(Console, {log: logMock});
     const output = component.props.children;
 
     expect(output.type).to.equal(OutputMock);
-    expect(output.props.log).to.equal(logMock);
+    expect(output.props.log).to.deep.equal(logMock);
   });
 });

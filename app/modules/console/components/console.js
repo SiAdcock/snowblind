@@ -15,4 +15,8 @@ class Console extends Component {
   }
 }
 
+Console.propTypes = {
+  log: React.PropTypes.array
+};
+
 export default Console;
