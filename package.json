@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gulp assets",
     "start": "node --harmony ./index",
-    "test": "node ./bin/test"
+    "test": "node ./bin/test",
+    "coverage": "babel-istanbul cover ./node_modules/.bin/_mocha -- spec/**/*-spec.js -u exports -R spec --compilers js:babel/register --require spec/spec-helpers/nodeSupport"
   },
   "author": "Simon Adcock (@SiAdcock)",
   "devDependencies": {
@@ -26,6 +27,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-util": "^3.0.6",
     "gulp-webpack": "^1.5.0",
+    "istanbul": "^0.3.19",
     "mocha": "^2.2.5",
     "mockery": "^1.4.0",
     "node-libs-browser": "^0.5.2",
