@@ -7,7 +7,7 @@
     "build": "gulp assets",
     "start": "node --harmony ./index",
     "test": "node ./bin/test",
-    "coverage": "babel-istanbul cover ./node_modules/.bin/_mocha -- spec/**/*-spec.js -u exports -R spec --compilers js:babel/register --require spec/spec-helpers/nodeSupport"
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha -- spec/**/*-spec.js -u exports -R spec --compilers js:babel/register --require spec/spec-helpers/nodeSupport"
   },
   "author": "Simon Adcock (@SiAdcock)",
   "devDependencies": {
