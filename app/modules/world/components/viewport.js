@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import Player from '../../player/components/player';
+import History from '../../history/components/history';
 import { DIRECTION_KEYS } from '../../../constants/keyMap';
 import { POS_PIXEL_RATIO } from '../../../constants/world';
 
@@ -28,12 +29,14 @@ class Viewport extends Component {
     };
   }
   render () {
-    const { player, zoom } = this.props;
-    const pos = this.convertPosToPixels(player.pos, zoom);
+    const { player, history, zoom } = this.props;
+    const playerPos = this.convertPosToPixels(player.pos, zoom);
+    const historyPos = this.convertPosToPixels(history[0], zoom);
 
     return (
       <div className="viewport">
-        <Player pos={pos}/>
+        <History pos={historyPos}/>
+        <Player pos={playerPos}/>
       </div>
     );
   }
@@ -41,6 +44,7 @@ class Viewport extends Component {
 
 Viewport.propTypes = {
   player: React.PropTypes.object,
+  history: React.PropTypes.array,
   move: React.PropTypes.func,
   zoom: React.PropTypes.number
 };
