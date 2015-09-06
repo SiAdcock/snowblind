@@ -1,5 +1,12 @@
 language: node_js
 node_js:
-  - node
+- node
 after_success:
-  - npm run coveralls
+- npm run coveralls
+deploy:
+  provider: heroku
+  api_key:
+    secure: HxRcHiEIE8bdv5veep4TnOzvuRYQH77JHFq+ZpDsDjLQd4gXERhhc2HBGt8ZQtjzZmRMJsCz53FT0etrzqXBDJ9MSNZ3R1Gqfj7xH7buMVRGnSQ2YuMp4cETS/VaSUHGppyVLfsu78DfSEns6q7vXr7cpmsCDAdJlXko9qw64I3wJJCYgCx4lhthnIFN4TnmH+FlYD1FEUsdkqkMbTThump3zUTfAU4u2abiMa6SJT3QgQtEGGeD1vH1jSP853zrgCmFM4gR9x98/zCwmAj2WJc1F4R1PIOaLqeoaz/kjDESS79JHqF4dtJ8HlA32dif/lTvg6lS/6UR1w6kYBXx0qHfIqwMqSNQWR4FL9scNpkU+6SKVrBBr3R4VRFlCjLB5TUhGcuc3b8sDTOfSRAst0e5diX0g9kNp7jagu1yQnSXRwF4R+sVfL2gKF09ydVca8+cZr2Zf1e/k3zVgl0EWA2/mevzu1pv0YfL7mmup3h6LaB6da/CkQc9fxG0lSAw2O3RJRqRNnBFSCZNwNIKlNj1ln2LIOenHJLZwThdmOhb8piTsCwI4WsAVw0JXLaPGooZDpVzicOAcLcLa1ISmjJ/D1XDTZ+NfCzfiS+Z/R2LP2Lg2JkiqP6JRZOz5LEz/tcTkprjhmD4H+cAhbjYqB5icn4OL8uHsz1yGGG3Uk0=
+  app: snowblind
+  on:
+    repo: SiCurious/snowblind
