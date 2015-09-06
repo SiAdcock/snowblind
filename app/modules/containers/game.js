@@ -9,13 +9,13 @@ import * as actionCreators from '../player/actions/index';
 
 class GameContainer extends Component {
   render() {
-    const { dispatch, player, log } = this.props;
+    const { dispatch, player, log, history } = this.props;
     const actions = bindActionCreators(actionCreators, dispatch);
 
     return (
       <div>
         <h1>Snowblind</h1>
-        <Viewport move={actions.movePlayer} player={player} zoom={1}/>
+        <Viewport move={actions.movePlayer} player={player} history={history} zoom={1}/>
         <Console log={log}/>
       </div>
     );
@@ -25,13 +25,15 @@ class GameContainer extends Component {
 GameContainer.propTypes = {
   dispatch: React.PropTypes.func,
   player: React.PropTypes.object,
-  log: React.PropTypes.array
+  log: React.PropTypes.array,
+  history: React.PropTypes.array
 };
 
 const select = (state) => {
   return {
     player: state.player,
-    log: state.log
+    log: state.log,
+    history: state.history
   };
 };
 
