@@ -5,11 +5,11 @@ const fetchMock = {
 };
 let getLog;
 
-describe('Get console log action', () => {
+describe('Get log action', () => {
   beforeEach(() => {
     mockSetup();
     mockery.registerMock('../../../helpers/fetch', fetchMock);
-    getLog = require('../../../../../app/modules/console/actions/get').actionCreator;
+    getLog = require('../../../../../app/modules/log/actions/get').actionCreator;
   });
   afterEach(() => {
     mockTearDown();

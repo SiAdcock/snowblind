@@ -15,7 +15,7 @@ class GameContainer extends Component {
     return (
       <div>
         <h1>Snowblind</h1>
-        <Viewport move={actions.movePlayer} player={player}/>
+        <Viewport move={actions.movePlayer} player={player} zoom={1}/>
         <Console log={log}/>
       </div>
     );

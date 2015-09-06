@@ -2,10 +2,10 @@
 
 let getLog;
 
-describe('Console reducers', () => {
+describe('Log reducers', () => {
   beforeEach(() => {
     mockSetup();
-    getLog = require('../../../../app/modules/console/reducers').getLog;
+    getLog = require('../../../../app/modules/log/reducers').getLog;
   });
   afterEach(() => {
     mockTearDown();

@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Player from '../../player/components/player';
 import { DIRECTIONS } from '../../../constants/keyMap';
+import { POS_PIXEL_RATIO } from '../../../constants/world';
 
 class Viewport extends Component {
   componentDidMount () {
@@ -20,12 +21,19 @@ class Viewport extends Component {
     this.props.move({ direction: direction });
 
   }
+  convertPosToPixels (pos, zoom) {
+    return {
+      x: pos.x * zoom * POS_PIXEL_RATIO,
+      y: pos.y * zoom * POS_PIXEL_RATIO
+    };
+  }
   render () {
-    const { player } = this.props;
+    const { player, zoom } = this.props;
+    const pos = this.convertPosToPixels(player.pos, zoom);
 
     return (
       <div className="viewport">
-        <Player pos={player.pos}/>
+        <Player pos={pos}/>
       </div>
     );
   }
@@ -33,7 +41,8 @@ class Viewport extends Component {
 
 Viewport.propTypes = {
   player: React.PropTypes.object,
-  move: React.PropTypes.func
+  move: React.PropTypes.func,
+  zoom: React.PropTypes.number
 };
 
 export default Viewport;

@@ -70,6 +70,7 @@ describe('Game container', () => {
 
     expect(viewport.props.move).to.deep.equal(movePlayerSpy);
     expect(viewport.props.player).to.deep.equal(propsMock.player);
+    expect(viewport.props.zoom).to.equal(1);
   });
   it('renders console', () => {
     const component = createComponent(GameContainer, propsMock);
