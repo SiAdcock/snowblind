@@ -13,10 +13,10 @@ global.mockery = mockery;
 /**
  * FIXME
  * something is seriously going wrong here. Sometimes useCleanCache
- * causes istanbul to fail. However, not using it causes individual
- * tests to fail when a clean cache is expected.
+ * causes a number of tests to fail with assertions deep inside babel-core.
+ * However, not using it causes tests to fail when a clean cache is expected!
  */
-global.mockSetup = (options = { warnOnUnregistered: false, useCleanCache: true }) => {
+global.mockSetup = (options = { warnOnUnregistered: false }) => {
   mockery.enable(options);
 };
 global.mockTearDown = () => {
