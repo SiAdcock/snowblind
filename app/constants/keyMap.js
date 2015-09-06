@@ -1,8 +1,10 @@
 'use strict';
 
-export const DIRECTIONS = {
-  '65': 'LEFT',
-  '68': 'RIGHT',
-  '83': 'DOWN',
-  '87': 'UP'
+import { DIRECTIONS } from './world';
+
+export const DIRECTION_KEYS = {
+  '65': DIRECTIONS.LEFT,
+  '68': DIRECTIONS.RIGHT,
+  '83': DIRECTIONS.DOWN,
+  '87': DIRECTIONS.UP
 };

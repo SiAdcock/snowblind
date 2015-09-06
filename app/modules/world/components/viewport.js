@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Player from '../../player/components/player';
-import { DIRECTIONS } from '../../../constants/keyMap';
+import { DIRECTION_KEYS } from '../../../constants/keyMap';
 import { POS_PIXEL_RATIO } from '../../../constants/world';
 
 class Viewport extends Component {
@@ -12,7 +12,7 @@ class Viewport extends Component {
   }
   movePlayer (e) {
     const keyCode = e.keyCode || e.which;
-    const direction = keyCode && DIRECTIONS[keyCode];
+    const direction = keyCode && DIRECTION_KEYS[keyCode];
 
     if (!keyCode || !direction) {
       return;

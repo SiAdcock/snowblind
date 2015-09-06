@@ -12,7 +12,7 @@ const playerMock = {
 };
 const moveSpy = sinon.spy();
 const keyMapConstantsMock = {
-  DIRECTIONS: {
+  DIRECTION_KEYS: {
     '87': 'UP'
   }
 };
