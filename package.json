@@ -18,6 +18,7 @@
     "eslint": "^0.22.1",
     "eslint-plugin-react": "^2.5.1",
     "express": "^4.13.3",
+    "glob": "^5.0.14",
     "istanbul": "^0.3.19",
     "mocha": "^2.2.5",
     "mockery": "^1.4.0",
