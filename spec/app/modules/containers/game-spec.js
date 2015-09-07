@@ -23,6 +23,10 @@ const propsMock = {
   log: [{
     id: 1,
     text: 'You go north'
+  }],
+  history: [{
+    x: 1,
+    y: 2
   }]
 };
 class ViewportMock extends Component {
@@ -70,6 +74,7 @@ describe('Game container', () => {
 
     expect(viewport.props.move).to.deep.equal(movePlayerSpy);
     expect(viewport.props.player).to.deep.equal(propsMock.player);
+    expect(viewport.props.history).to.deep.equal(propsMock.history);
     expect(viewport.props.zoom).to.equal(1);
   });
   it('renders console', () => {

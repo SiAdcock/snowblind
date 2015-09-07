@@ -10,9 +10,13 @@ const playerMock = {
     y: 5
   }
 };
+const historyMock = [{
+  x: 10,
+  y: 5
+}];
 const moveSpy = sinon.spy();
 const keyMapConstantsMock = {
-  DIRECTIONS: {
+  DIRECTION_KEYS: {
     '87': 'UP'
   }
 };
@@ -24,11 +28,17 @@ class PlayerMock extends Component {
     return (<div/>);
   }
 }
+class HistoryMock extends Component {
+  render() {
+    return (<div/>);
+  }
+}
 
 describe('Viewport component', () => {
   beforeEach(() => {
     mockSetup();
     mockery.registerMock('../../player/components/player', PlayerMock);
+    mockery.registerMock('../../history/components/history', HistoryMock);
     mockery.registerMock('../../../constants/keyMap', keyMapConstantsMock);
     mockery.registerMock('../../../constants/world', worldConstantsMock);
     Viewport = require('../../../../../app/modules/world/components/viewport');
@@ -38,14 +48,24 @@ describe('Viewport component', () => {
     moveSpy.reset();
   });
   it('renders the viewport', () => {
-    const component = createComponent(Viewport, {player: playerMock, zoom: 1});
+    const props = {player: playerMock, history: historyMock, zoom: 1};
+    const component = createComponent(Viewport, props);
 
     expect(component.type).to.equal('div');
     expect(component.props.className).to.equal('viewport');
   });
+  it('passes history position to History component', () => {
+    const props = {player: playerMock, history: historyMock, zoom: 1};
+    const component = createComponent(Viewport, props);
+    const [history, ] = component.props.children;
+
+    expect(history.type).to.equal(HistoryMock);
+    expect(history.props.pos).to.exist;
+  });
   it('passes player position to Player component', () => {
-    const component = createComponent(Viewport, {player: playerMock, zoom: 1});
-    const player = component.props.children;
+    const props = {player: playerMock, history: historyMock, zoom: 1};
+    const component = createComponent(Viewport, props);
+    const [, player] = component.props.children;
 
     expect(player.type).to.equal(PlayerMock);
     expect(player.props.pos).to.exist;
@@ -68,7 +88,7 @@ describe('Viewport component', () => {
 
     expect(moveSpy.called).to.be.false;
   });
-  it('convert player position to pixels based on zoom level', () => {
+  it('convert position to pixels based on zoom level', () => {
     const zoom = 1;
     const pos = {x: 10, y: 5};
     const expectedX = zoom * worldConstantsMock.POS_PIXEL_RATIO * pos.x;
