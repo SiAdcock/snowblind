@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "Snowblind",
   "main": "index.js",
+  "repository": "https://github.com/SiCurious/snowblind",
+  "license": "GPL-3.0",
   "scripts": {
     "build": "./node_modules/gulp/bin/gulp.js assets",
     "start": "node --harmony ./index",
