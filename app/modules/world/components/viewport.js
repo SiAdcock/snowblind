@@ -31,11 +31,14 @@ class Viewport extends Component {
   render () {
     const { player, history, zoom } = this.props;
     const playerPos = this.convertPosToPixels(player.pos, zoom);
-    const historyPos = this.convertPosToPixels(history[0], zoom);
+    const historyElements = history.map(function(historyPoint) {
+      const key = 'history-point-' + historyPoint.x + ',' + historyPoint.y;
+      return <History key={key} pos={this.convertPosToPixels(historyPoint, zoom)}/>;
+    }.bind(this));
 
     return (
       <div className="viewport">
-        <History pos={historyPos}/>
+        {historyElements}
         <Player pos={playerPos}/>
       </div>
     );

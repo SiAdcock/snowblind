@@ -10,10 +10,16 @@ const playerMock = {
     y: 5
   }
 };
-const historyMock = [{
-  x: 10,
-  y: 5
-}];
+const historyMock = [
+  {
+    x: 10,
+    y: 5
+  },
+  {
+    x: 11,
+    y: 6
+  }
+];
 const moveSpy = sinon.spy();
 const keyMapConstantsMock = {
   DIRECTION_KEYS: {
@@ -54,13 +60,21 @@ describe('Viewport component', () => {
     expect(component.type).to.equal('div');
     expect(component.props.className).to.equal('viewport');
   });
+  it('renders a History component for each item in history array', () => {
+    const props = {player: playerMock, history: historyMock, zoom: 1};
+    const component = createComponent(Viewport, props);
+    const [history, ] = component.props.children;
+
+    expect(history[0].type).to.equal(HistoryMock);
+    expect(history[1].type).to.equal(HistoryMock);
+  });
   it('passes history position to History component', () => {
     const props = {player: playerMock, history: historyMock, zoom: 1};
     const component = createComponent(Viewport, props);
     const [history, ] = component.props.children;
 
-    expect(history.type).to.equal(HistoryMock);
-    expect(history.props.pos).to.exist;
+    expect(history[0].props.pos).to.exist;
+    expect(history[1].props.pos).to.exist;
   });
   it('passes player position to Player component', () => {
     const props = {player: playerMock, history: historyMock, zoom: 1};
