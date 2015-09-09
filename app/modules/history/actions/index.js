@@ -1,5 +1,6 @@
 'use strict';
 
 import getHistory from './get';
+import addHistory from './add';
 
-export { getHistory };
+export { getHistory, addHistory };

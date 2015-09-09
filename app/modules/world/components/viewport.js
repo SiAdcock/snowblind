@@ -20,7 +20,7 @@ class Viewport extends Component {
     }
 
     this.props.move({ direction: direction });
-
+    this.props.addHistory(this.props.player.pos);
   }
   convertPosToPixels (pos, zoom) {
     return {

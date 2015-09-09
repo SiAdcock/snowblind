@@ -21,6 +21,7 @@ const historyMock = [
   }
 ];
 const moveSpy = sinon.spy();
+const addHistorySpy = sinon.spy();
 const keyMapConstantsMock = {
   DIRECTION_KEYS: {
     '87': 'UP'
@@ -52,6 +53,7 @@ describe('Viewport component', () => {
   afterEach(() => {
     mockTearDown();
     moveSpy.reset();
+    addHistorySpy.reset();
   });
   it('renders the viewport', () => {
     const props = {player: playerMock, history: historyMock, zoom: 1};
@@ -84,23 +86,44 @@ describe('Viewport component', () => {
     expect(player.type).to.equal(PlayerMock);
     expect(player.props.pos).to.exist;
   });
-  it('triggers move action on directional keypress', () => {
-    Viewport.prototype.props = {move: moveSpy};
+  it('triggers move and add history actions on directional keypress', () => {
+    Viewport.prototype.props = {
+      player: {
+        pos: {}
+      },
+      move: moveSpy,
+      addHistory: addHistorySpy
+    };
     Viewport.prototype.movePlayer({keyCode: 87});
 
     expect(moveSpy.calledWith({direction: 'UP'})).to.be.true;
+    expect(addHistorySpy.calledWith({})).to.be.true;
   });
   it('does not trigger move action if keypress is not a direction key', () => {
-    Viewport.prototype.props = {move: moveSpy};
+    Viewport.prototype.props = {
+      player: {
+        pos: {}
+      },
+      move: moveSpy,
+      addHistory: addHistorySpy
+    };
     Viewport.prototype.movePlayer({keyCode: 9999});
 
     expect(moveSpy.called).to.be.false;
+    expect(addHistorySpy.called).to.be.false;
   });
   it('does not trigger move action if keypress does not have a keycode', () => {
-    Viewport.prototype.props = {move: moveSpy};
+    Viewport.prototype.props = {
+      player: {
+        pos: {}
+      },
+      move: moveSpy,
+      addHistory: addHistorySpy
+    };
     Viewport.prototype.movePlayer({foo: 9999});
 
     expect(moveSpy.called).to.be.false;
+    expect(addHistorySpy.called).to.be.false;
   });
   it('convert position to pixels based on zoom level', () => {
     const zoom = 1;
