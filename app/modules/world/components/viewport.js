@@ -31,8 +31,8 @@ class Viewport extends Component {
   render () {
     const { player, history, zoom } = this.props;
     const playerPos = this.convertPosToPixels(player.pos, zoom);
-    const historyElements = history.map(function(historyPoint) {
-      const key = 'history-point-' + historyPoint.x + ',' + historyPoint.y;
+    const historyElements = history.map(function(historyPoint, index) {
+      const key = 'history-point-' + index + '-' + historyPoint.x + ',' + historyPoint.y;
       return <History key={key} pos={this.convertPosToPixels(historyPoint, zoom)}/>;
     }.bind(this));
 
