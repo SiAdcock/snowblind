@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import Player from '../../player/components/player';
 import History from '../../history/components/history';
+import Tree from './tree';
 import { DIRECTION_KEYS } from '../../../constants/keyMap';
 import { POS_PIXEL_RATIO } from '../../../constants/world';
 
@@ -38,16 +39,24 @@ class Viewport extends Component {
       return <History key={key} pos={this.convertPosToPixels(historyPoint, zoom)}/>;
     }.bind(this));
   }
+  buildTerrainElements(terrain, zoom) {
+    return terrain.map(function(terrainItem, index) {
+      const key = 'terrain-item-' + index + '-' + terrainItem.pos.x + ',' + terrainItem.pos.y;
+      return <Tree key={key} pos={this.convertPosToPixels(terrainItem.pos, zoom)}/>;
+    }.bind(this));
+  }
   render () {
-    const { player, history, zoom } = this.props;
+    const { player, history, zoom, terrain } = this.props;
     const playerPos = this.convertPosToPixels(player.pos, zoom);
     const rememberedHistory = this.getRememberedHistory(history, player.memory);
     const historyElements = this.buildHistoryElements(rememberedHistory, zoom);
+    const terrainElements = this.buildTerrainElements(terrain, zoom);
 
     return (
       <div className="viewport">
         {historyElements}
         <Player pos={playerPos}/>
+        {terrainElements}
       </div>
     );
   }
