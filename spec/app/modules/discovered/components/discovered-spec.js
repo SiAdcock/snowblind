@@ -2,18 +2,18 @@
 
 import createComponent from '../../../../spec-helpers/createComponent';
 
-let History;
+let Discovered;
 
-describe('History component', () => {
+describe('Discovered component', () => {
   beforeEach(() => {
-    History = require('../../../../../app/modules/history/components/history');
+    Discovered = require('../../../../../app/modules/discovered/components/discovered');
   });
-  it('renders the history element', () => {
+  it('renders the discovered element', () => {
     const pos = {
       x: 100,
       y: 200
     };
-    const component = createComponent(History, {pos: pos});
+    const component = createComponent(Discovered, {pos: pos});
     const style = component.props.style;
 
     expect(component.type).to.equal('div');

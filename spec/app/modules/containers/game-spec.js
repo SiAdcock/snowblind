@@ -89,7 +89,7 @@ describe('Game container', () => {
   it('creates player and history actions', () => {
     createComponent(GameContainer, propsMock);
 
-    expect(reduxMock.bindActionCreators.calledTwice).to.be.true;
+    expect(reduxMock.bindActionCreators.calledThrice).to.be.true;
   });
   it('renders viewport', () => {
     const component = createComponent(GameContainer, propsMock);

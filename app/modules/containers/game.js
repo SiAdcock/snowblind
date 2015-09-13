@@ -7,12 +7,14 @@ import Viewport from '../world/components/viewport';
 import Console from '../console/components/console';
 import * as playerActionCreators from '../player/actions/index';
 import * as historyActionCreators from '../history/actions/index';
+import * as discoveredActionCreators from '../discovered/actions/index';
 
 class GameContainer extends Component {
   render() {
     const { dispatch, player, log, history, discovered, terrain } = this.props;
     const playerActions = bindActionCreators(playerActionCreators, dispatch);
     const historyActions = bindActionCreators(historyActionCreators, dispatch);
+    const discoveredActions = bindActionCreators(discoveredActionCreators, dispatch);
 
     return (
       <div>
@@ -20,6 +22,7 @@ class GameContainer extends Component {
         <Viewport
           move={playerActions.movePlayer}
           addHistory={historyActions.addHistory}
+          addDiscovered={discoveredActions.addDiscovered}
           player={player}
           history={history}
           terrain={terrain}
