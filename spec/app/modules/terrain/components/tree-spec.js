@@ -2,21 +2,22 @@
 
 import createComponent from '../../../../spec-helpers/createComponent';
 
-let History;
+let Tree;
 
-describe('History component', () => {
+describe('Tree component', () => {
   beforeEach(() => {
-    History = require('../../../../../app/modules/history/components/history');
+    Tree = require('../../../../../app/modules/terrain/components/tree');
   });
-  it('renders the history element', () => {
+  it('renders a tree', () => {
     const pos = {
       x: 100,
       y: 200
     };
-    const component = createComponent(History, {pos: pos});
+    const component = createComponent(Tree, {pos: pos});
     const style = component.props.style;
 
     expect(component.type).to.equal('div');
+    expect(component.props.className).to.equal('terrain terrain-tree');
     expect(style.left).to.equal(pos.x);
     expect(style.top).to.equal(pos.y);
   });

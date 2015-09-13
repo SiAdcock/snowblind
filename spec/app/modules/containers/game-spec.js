@@ -10,7 +10,11 @@ const reduxMock = {
 const playerActions = {
   action: sinon.stub()
 };
+const historyActions = {
+  action: sinon.stub()
+};
 const movePlayerSpy = sinon.spy();
+const addHistorySpy = sinon.spy();
 const dispatchSpy = sinon.spy();
 const propsMock = {
   dispatch: dispatchSpy,
@@ -27,6 +31,17 @@ const propsMock = {
   history: [{
     x: 1,
     y: 2
+  }],
+  terrain: [{
+    pos: {
+      x: 1,
+      y: 3
+    },
+    code: 'T'
+  }],
+  discovered: [{
+    x: 8,
+    y: 9
   }]
 };
 class ViewportMock extends Component {
@@ -44,11 +59,15 @@ describe('Game container', () => {
 
   beforeEach(() => {
     mockSetup();
-    reduxMock.bindActionCreators.returns({ movePlayer: movePlayerSpy });
+    reduxMock.bindActionCreators.returns({
+      movePlayer: movePlayerSpy,
+      addHistory: addHistorySpy
+    });
     mockery.registerMock('redux', reduxMock);
     mockery.registerMock('../world/components/viewport', ViewportMock);
     mockery.registerMock('../console/components/console', ConsoleMock);
     mockery.registerMock('../player/actions/index', playerActions);
+    mockery.registerMock('../history/actions/index', historyActions);
     GameContainer = require('../../../../app/modules/containers/game').GameContainer;
   });
   afterEach(() => {
@@ -56,17 +75,21 @@ describe('Game container', () => {
     reduxMock.bindActionCreators.reset();
     playerActions.action.reset();
     movePlayerSpy.reset();
+    addHistorySpy.reset();
     dispatchSpy.reset();
   });
   it('renders game container', () => {
     const component = createComponent(GameContainer, propsMock);
     const [title, , ] = component.props.children;
 
-    expect(reduxMock.bindActionCreators.args[0][0].action).to.deep.equal(playerActions.action);
-    expect(reduxMock.bindActionCreators.args[0][1]).to.deep.equal(dispatchSpy);
     expect(component.type).to.equal('div');
     expect(title.type).to.equal('h1');
     expect(title.props.children).to.equal('Snowblind');
+  });
+  it('creates player and history actions', () => {
+    createComponent(GameContainer, propsMock);
+
+    expect(reduxMock.bindActionCreators.calledThrice).to.be.true;
   });
   it('renders viewport', () => {
     const component = createComponent(GameContainer, propsMock);
@@ -75,6 +98,8 @@ describe('Game container', () => {
     expect(viewport.props.move).to.deep.equal(movePlayerSpy);
     expect(viewport.props.player).to.deep.equal(propsMock.player);
     expect(viewport.props.history).to.deep.equal(propsMock.history);
+    expect(viewport.props.discovered).to.deep.equal(propsMock.discovered);
+    expect(viewport.props.terrain).to.deep.equal(propsMock.terrain);
     expect(viewport.props.zoom).to.equal(1);
   });
   it('renders console', () => {

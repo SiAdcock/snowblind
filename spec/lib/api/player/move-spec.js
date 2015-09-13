@@ -44,7 +44,7 @@ describe('POST /player/move endpoint', () => {
     let actualY;
 
     movePlayer.next();
-    actualY = JSON.parse(context.body).y;
+    actualY = JSON.parse(context.body).pos.y;
     expect(actualY).to.equal(expectedY);
     expect(stateMock.player.pos.y).to.equal(expectedY);
   });
@@ -61,7 +61,7 @@ describe('POST /player/move endpoint', () => {
     let actualY;
 
     movePlayer.next();
-    actualY = JSON.parse(context.body).y;
+    actualY = JSON.parse(context.body).pos.y;
     expect(actualY).to.equal(expectedY);
     expect(stateMock.player.pos.y).to.equal(expectedY);
   });
@@ -78,7 +78,7 @@ describe('POST /player/move endpoint', () => {
     let actualX;
 
     movePlayer.next();
-    actualX = JSON.parse(context.body).x;
+    actualX = JSON.parse(context.body).pos.x;
     expect(actualX).to.equal(expectedX);
     expect(stateMock.player.pos.x).to.equal(expectedX);
   });
@@ -95,7 +95,7 @@ describe('POST /player/move endpoint', () => {
     let actualX;
 
     movePlayer.next();
-    actualX = JSON.parse(context.body).x;
+    actualX = JSON.parse(context.body).pos.x;
     expect(actualX).to.equal(expectedX);
     expect(stateMock.player.pos.x).to.equal(expectedX);
   });
