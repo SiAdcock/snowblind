@@ -10,13 +10,15 @@ import playerReducers from '../app/modules/player/reducers';
 import logReducers from '../app/modules/log/reducers';
 import historyReducers from '../app/modules/history/reducers';
 import terrainReducers from '../app/modules/terrain/reducers';
+import discoveredReducers from '../app/modules/discovered/reducers';
 
 const reducers = Object.assign(
   {},
   {player: playerReducers},
   {log: logReducers},
   {history: historyReducers},
-  {terrain: terrainReducers}
+  {terrain: terrainReducers},
+  {discovered: discoveredReducers}
 );
 
 const initialState = window.__data;
