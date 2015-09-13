@@ -5,7 +5,7 @@ let getTerrain;
 describe('World reducers', () => {
   beforeEach(() => {
     mockSetup();
-    getTerrain = require('../../../../app/modules/world/reducers').getTerrain;
+    getTerrain = require('../../../../app/modules/terrain/reducers').getTerrain;
   });
   afterEach(() => {
     mockTearDown();

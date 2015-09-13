@@ -60,7 +60,7 @@ describe('Viewport component', () => {
     mockSetup();
     mockery.registerMock('../../player/components/player', PlayerMock);
     mockery.registerMock('../../history/components/history', HistoryMock);
-    mockery.registerMock('./tree', TreeMock);
+    mockery.registerMock('../../terrain/components/tree', TreeMock);
     mockery.registerMock('../../../constants/keyMap', keyMapConstantsMock);
     mockery.registerMock('../../../constants/world', worldConstantsMock);
     Viewport = require('../../../../../app/modules/world/components/viewport');

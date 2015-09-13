@@ -9,7 +9,7 @@ describe('Get terrain action', () => {
   beforeEach(() => {
     mockSetup();
     mockery.registerMock('../../../helpers/fetch', fetchMock);
-    getTerrain = require('../../../../../app/modules/world/actions/getTerrain').actionCreator;
+    getTerrain = require('../../../../../app/modules/terrain/actions/get').actionCreator;
   });
   afterEach(() => {
     mockTearDown();

@@ -3,12 +3,12 @@
 import { GET_TERRAIN } from '../../constants/actionTypes';
 import { handleActions } from 'redux-actions';
 
-let worldMap = {};
+let terrainMap = {};
 const getTerrain = (state, action) => {
   return action.payload;
 };
 
-worldMap[GET_TERRAIN] = getTerrain;
+terrainMap[GET_TERRAIN] = getTerrain;
 
 export { getTerrain };
-export default handleActions(worldMap, []);
+export default handleActions(terrainMap, []);

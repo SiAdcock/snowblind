@@ -1,4 +1,4 @@
-.tree {
+.terrain {
   position: absolute;
   height: 20px;
   width: 20px;
@@ -6,4 +6,8 @@
   border-radius: 10px;
   background-color: #00ff00;
   opacity: 0.8;
+}
+
+.terrain-tree {
+  background-color: #00ff00;
 }

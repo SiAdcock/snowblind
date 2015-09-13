@@ -6,7 +6,7 @@ let Tree;
 
 describe('Tree component', () => {
   beforeEach(() => {
-    Tree = require('../../../../../app/modules/world/components/tree');
+    Tree = require('../../../../../app/modules/terrain/components/tree');
   });
   it('renders a tree', () => {
     const pos = {
@@ -17,7 +17,7 @@ describe('Tree component', () => {
     const style = component.props.style;
 
     expect(component.type).to.equal('div');
-    expect(component.props.className).to.equal('tree');
+    expect(component.props.className).to.equal('terrain terrain-tree');
     expect(style.left).to.equal(pos.x);
     expect(style.top).to.equal(pos.y);
   });

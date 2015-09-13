@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import Player from '../../player/components/player';
 import History from '../../history/components/history';
-import Tree from './tree';
+import Tree from '../../terrain/components/tree';
 import { DIRECTION_KEYS } from '../../../constants/keyMap';
 import { POS_PIXEL_RATIO } from '../../../constants/world';
 

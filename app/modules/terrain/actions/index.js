@@ -1,5 +1,5 @@
 'use strict';
 
-import getTerrain from './getTerrain';
+import getTerrain from './get';
 
 export { getTerrain };
