@@ -7,3 +7,7 @@ export const DIRECTIONS = {
   LEFT: 'LEFT',
   RIGHT: 'RIGHT'
 };
+export const TERRAIN_CODES = {
+  'T': 'TREE'
+};
+
