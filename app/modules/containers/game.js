@@ -10,7 +10,7 @@ import * as historyActionCreators from '../history/actions/index';
 
 class GameContainer extends Component {
   render() {
-    const { dispatch, player, log, history, terrain } = this.props;
+    const { dispatch, player, log, history, discovered, terrain } = this.props;
     const playerActions = bindActionCreators(playerActionCreators, dispatch);
     const historyActions = bindActionCreators(historyActionCreators, dispatch);
 
@@ -23,6 +23,7 @@ class GameContainer extends Component {
           player={player}
           history={history}
           terrain={terrain}
+          discovered={discovered}
           zoom={1}/>
         <Console log={log}/>
       </div>
@@ -35,6 +36,7 @@ GameContainer.propTypes = {
   player: React.PropTypes.object,
   log: React.PropTypes.array,
   history: React.PropTypes.array,
+  discovered: React.PropTypes.array,
   terrain: React.PropTypes.array
 };
 
@@ -43,6 +45,7 @@ const select = (state) => {
     player: state.player,
     log: state.log,
     history: state.history,
+    discovered: state.discovered,
     terrain: state.terrain
   };
 };

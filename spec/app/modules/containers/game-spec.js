@@ -38,6 +38,10 @@ const propsMock = {
       y: 3
     },
     code: 'T'
+  }],
+  discovered: [{
+    x: 8,
+    y: 9
   }]
 };
 class ViewportMock extends Component {
@@ -94,6 +98,7 @@ describe('Game container', () => {
     expect(viewport.props.move).to.deep.equal(movePlayerSpy);
     expect(viewport.props.player).to.deep.equal(propsMock.player);
     expect(viewport.props.history).to.deep.equal(propsMock.history);
+    expect(viewport.props.discovered).to.deep.equal(propsMock.discovered);
     expect(viewport.props.terrain).to.deep.equal(propsMock.terrain);
     expect(viewport.props.zoom).to.equal(1);
   });
