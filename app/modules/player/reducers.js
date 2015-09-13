@@ -8,9 +8,7 @@ const getPlayer = (state, action) => {
   return action.payload;
 };
 const movePlayer = (state, action) => {
-  return {
-    pos: action.payload
-  };
+  return action.payload;
 };
 
 playerMap[GET_PLAYER] = getPlayer;

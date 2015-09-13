@@ -55,75 +55,79 @@ describe('Viewport component', () => {
     moveSpy.reset();
     addHistorySpy.reset();
   });
-  it('renders the viewport', () => {
-    const props = {player: playerMock, history: historyMock, zoom: 1};
-    const component = createComponent(Viewport, props);
+  describe('renders', () => {
+    it('the viewport', () => {
+      const props = {player: playerMock, history: historyMock, zoom: 1};
+      const component = createComponent(Viewport, props);
 
-    expect(component.type).to.equal('div');
-    expect(component.props.className).to.equal('viewport');
+      expect(component.type).to.equal('div');
+      expect(component.props.className).to.equal('viewport');
+    });
+    it('a History component for each item in history array', () => {
+      const props = {player: playerMock, history: historyMock, zoom: 1};
+      const component = createComponent(Viewport, props);
+      const [history, ] = component.props.children;
+
+      expect(history[0].type).to.equal(HistoryMock);
+      expect(history[1].type).to.equal(HistoryMock);
+    });
+    it('and passes history position to History component', () => {
+      const props = {player: playerMock, history: historyMock, zoom: 1};
+      const component = createComponent(Viewport, props);
+      const [history, ] = component.props.children;
+
+      expect(history[0].props.pos).to.exist;
+      expect(history[1].props.pos).to.exist;
+    });
+    it('and passes player position to Player component', () => {
+      const props = {player: playerMock, history: historyMock, zoom: 1};
+      const component = createComponent(Viewport, props);
+      const [, player] = component.props.children;
+
+      expect(player.type).to.equal(PlayerMock);
+      expect(player.props.pos).to.exist;
+    });
   });
-  it('renders a History component for each item in history array', () => {
-    const props = {player: playerMock, history: historyMock, zoom: 1};
-    const component = createComponent(Viewport, props);
-    const [history, ] = component.props.children;
+  describe('move player', () => {
+    it('triggers move and add history actions on directional keypress', () => {
+      Viewport.prototype.props = {
+        player: {
+          pos: {}
+        },
+        move: moveSpy,
+        addHistory: addHistorySpy
+      };
+      Viewport.prototype.movePlayer({keyCode: 87});
 
-    expect(history[0].type).to.equal(HistoryMock);
-    expect(history[1].type).to.equal(HistoryMock);
-  });
-  it('passes history position to History component', () => {
-    const props = {player: playerMock, history: historyMock, zoom: 1};
-    const component = createComponent(Viewport, props);
-    const [history, ] = component.props.children;
+      expect(moveSpy.calledWith({direction: 'UP'})).to.be.true;
+      expect(addHistorySpy.calledWith({})).to.be.true;
+    });
+    it('does not trigger move action if keypress is not a direction key', () => {
+      Viewport.prototype.props = {
+        player: {
+          pos: {}
+        },
+        move: moveSpy,
+        addHistory: addHistorySpy
+      };
+      Viewport.prototype.movePlayer({keyCode: 9999});
 
-    expect(history[0].props.pos).to.exist;
-    expect(history[1].props.pos).to.exist;
-  });
-  it('passes player position to Player component', () => {
-    const props = {player: playerMock, history: historyMock, zoom: 1};
-    const component = createComponent(Viewport, props);
-    const [, player] = component.props.children;
+      expect(moveSpy.called).to.be.false;
+      expect(addHistorySpy.called).to.be.false;
+    });
+    it('does not trigger move action if keypress does not have a keycode', () => {
+      Viewport.prototype.props = {
+        player: {
+          pos: {}
+        },
+        move: moveSpy,
+        addHistory: addHistorySpy
+      };
+      Viewport.prototype.movePlayer({foo: 9999});
 
-    expect(player.type).to.equal(PlayerMock);
-    expect(player.props.pos).to.exist;
-  });
-  it('triggers move and add history actions on directional keypress', () => {
-    Viewport.prototype.props = {
-      player: {
-        pos: {}
-      },
-      move: moveSpy,
-      addHistory: addHistorySpy
-    };
-    Viewport.prototype.movePlayer({keyCode: 87});
-
-    expect(moveSpy.calledWith({direction: 'UP'})).to.be.true;
-    expect(addHistorySpy.calledWith({})).to.be.true;
-  });
-  it('does not trigger move action if keypress is not a direction key', () => {
-    Viewport.prototype.props = {
-      player: {
-        pos: {}
-      },
-      move: moveSpy,
-      addHistory: addHistorySpy
-    };
-    Viewport.prototype.movePlayer({keyCode: 9999});
-
-    expect(moveSpy.called).to.be.false;
-    expect(addHistorySpy.called).to.be.false;
-  });
-  it('does not trigger move action if keypress does not have a keycode', () => {
-    Viewport.prototype.props = {
-      player: {
-        pos: {}
-      },
-      move: moveSpy,
-      addHistory: addHistorySpy
-    };
-    Viewport.prototype.movePlayer({foo: 9999});
-
-    expect(moveSpy.called).to.be.false;
-    expect(addHistorySpy.called).to.be.false;
+      expect(moveSpy.called).to.be.false;
+      expect(addHistorySpy.called).to.be.false;
+    });
   });
   it('convert position to pixels based on zoom level', () => {
     const zoom = 1;
@@ -134,5 +138,43 @@ describe('Viewport component', () => {
 
     expect(actual.x).to.equal(expectedX);
     expect(actual.y).to.equal(expectedY);
+  });
+  describe('remembered history', () => {
+    it('returns all history if player\'s memory is greater than or equal to history length', () => {
+      const history = [{x: 1, y: 2}, {x: 10, y: 12}];
+      const memory = 3;
+      const rememberedHistory = Viewport.prototype.getRememberedHistory(history, memory);
+
+      expect(rememberedHistory).to.deep.equal(history);
+    });
+    it('returns most recent history sliced at player\'s memory if player\'s memory is less than history length', () => {
+      const history = [{x: 1, y: 2}, {x: 10, y: 12}];
+      const memory = 1;
+      const expected = [history[1]];
+      const rememberedHistory = Viewport.prototype.getRememberedHistory(history, memory);
+
+      expect(rememberedHistory).to.deep.equal(expected);
+    });
+  });
+  describe('history elements', () => {
+    it('creates a history element for each position of remembered history', () => {
+      const rememberedHistory = [{x: 1, y: 2}, {x: 10, y: 12}];
+      const zoom = 1;
+      const historyElements = Viewport.prototype.buildHistoryElements(rememberedHistory, zoom);
+
+      expect(historyElements.length).to.equal(rememberedHistory.length);
+      expect(historyElements[0].type).to.equal(HistoryMock);
+    });
+    it('passes the position to each history element', () => {
+      const rememberedHistory = [{x: 1, y: 2}, {x: 10, y: 12}];
+      const zoom = 1;
+      const historyElements = Viewport.prototype.buildHistoryElements(rememberedHistory, zoom);
+      const expectedX = zoom * worldConstantsMock.POS_PIXEL_RATIO * rememberedHistory[0].x;
+      const expectedY = zoom * worldConstantsMock.POS_PIXEL_RATIO * rememberedHistory[0].y;
+
+      expect(historyElements[0].props.pos.x).to.equal(expectedX);
+      expect(historyElements[0].props.pos.y).to.equal(expectedY);
+
+    });
   });
 });

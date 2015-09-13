@@ -28,13 +28,21 @@ class Viewport extends Component {
       y: pos.y * zoom * POS_PIXEL_RATIO
     };
   }
-  render () {
-    const { player, history, zoom } = this.props;
-    const playerPos = this.convertPosToPixels(player.pos, zoom);
-    const historyElements = history.map(function(historyPoint, index) {
+  getRememberedHistory(history, memory) {
+    let rememberedHistory = history.length < memory ? history.slice() : history.slice(history.length - memory, history.length);
+    return rememberedHistory;
+  }
+  buildHistoryElements(rememberedHistory, zoom) {
+    return rememberedHistory.map(function(historyPoint, index) {
       const key = 'history-point-' + index + '-' + historyPoint.x + ',' + historyPoint.y;
       return <History key={key} pos={this.convertPosToPixels(historyPoint, zoom)}/>;
     }.bind(this));
+  }
+  render () {
+    const { player, history, zoom } = this.props;
+    const playerPos = this.convertPosToPixels(player.pos, zoom);
+    const rememberedHistory = this.getRememberedHistory(history, player.memory);
+    const historyElements = this.buildHistoryElements(rememberedHistory, zoom);
 
     return (
       <div className="viewport">

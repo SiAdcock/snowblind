@@ -33,9 +33,7 @@ describe('Player reducers', () => {
         }
       };
       let expected = {
-        pos: {
-          x: 200, y: 300
-        }
+        x: 200, y: 300
       };
 
       expect(movePlayer(undefined, action)).to.deep.equal(expected);
