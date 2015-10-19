@@ -10,11 +10,21 @@ An open source adventure game built with universal JavaScript, React + Redux
 ```
 NODE_ENV=production npm run build
 ```
+In Windows set the variable before executing the command
+```
+set NODE_ENV=production
+npm run build
+```
 
 ## Run in production mode
 
 ```
 NODE_ENV=production npm start
+```
+In Windows
+```
+set NODE_ENV=production
+npm start
 ```
 
 ## Run in developer mode
